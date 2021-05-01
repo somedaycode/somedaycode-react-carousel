@@ -115,7 +115,7 @@ div {
 }
 ```
 
-then import css file to your Carousel
+then, Import css file to your Carousel
 
 ### without using styled-components
 
@@ -142,4 +142,4 @@ Please let me know if you get any issues while using `@somedaycode/react-carouse
 
 email: somedaycode@gmail.com
 
-github:
+github: https://github.com/somedaycode/somedaycode-react-carousel
