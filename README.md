@@ -1,70 +1,145 @@
-# Getting Started with Create React App
+# @somedaycode/react-carousel
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+react-carousel for your projects.
 
-## Available Scripts
+easy to **customize**, **simple** but also **powerful**.
 
-In the project directory, you can run:
+## Installation
 
-### `yarn start`
+```
+npm install @somedaycode/react-carousel
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Example
 
-### `yarn test`
+![Untitled_ May 2, 2021 4_42 AM](https://user-images.githubusercontent.com/71962505/116793283-df526200-ab00-11eb-828f-b50040c9198e.gif)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### code used as example
 
-### `yarn build`
+```jsx
+import React from 'react';
+import Carousel from '@somedaycode/react-carousel';
+import styled from 'styled-components';
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+const App = () => {
+  const options = {
+    carouselWidth: 800,
+    itemsToShow: 4,
+    duration: 0.5,
+    timing: 'ease-in-out',
+    arrowSize: 20,
+  };
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map((card) => (
+    <Item>{card}</Item>
+  ));
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  return (
+    <Main>
+      <Carousel {...options}>{items}</Carousel>
+    </Main>
+  );
+};
 
-### `yarn eject`
+const Main = styled.main`
+  display: flex;
+  justify-content: center;
+`;
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+// width: 188px = 200px - border(1px + 1px) - margin(5px + 5px)
+const Item = styled.div`
+  margin: 0 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 6px;
+  width: 188px;
+  height: 200px;
+`;
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+export default App;
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+---
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## props
 
-## Learn More
+| **Name**        |                          **Description**                           |                                                                                                            **value** |
+| --------------- | :----------------------------------------------------------------: | -------------------------------------------------------------------------------------------------------------------: |
+| `carouselWidth` |                     Carousel total width (px)                      |                                                                                      `null` or `Number` without 'px' |
+| `itemsToShow`   |           A number of Items you want to show in Carousel           |                                                                                                             `Number` |
+| `duration`      | The length of time a transition animation should take to complete. |                                                                                                             `Number` |
+| `timing`        |                     Transition-timing-function                     | `String`: 'ease', 'ease-out' etc. [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function) |
+| `arrowSize`     |                          Arrow size (px)                           |                                                                                                             `Number` |
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## How to customize your Carousel or Arrow?
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+You can simply customize your carousel or arrow with **css**
 
-### Code Splitting
+First, create a css file (ex. carouselStyle.css)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```css
+/*
+ * carouselStyle.css
+ * Each component has own className
+*/
+.carousel {
+  /* here you write css  */
+}
 
-### Analyzing the Bundle Size
+.carousel-right-arrow {
+  /* here you write css  */
+}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+.carousel-left-arrow {
+  /* here you write  css  */
+}
 
-### Making a Progressive Web App
+main {
+  display: flex;
+  justify-content: center;
+}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+div {
+  margin: 0 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 6px;
+  width: 188px; /* 200px - border(1px + 1px) - margin(5px + 5px) */
+  height: 200px;
+}
+```
 
-### Advanced Configuration
+then import css file to your Carousel
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### without using styled-components
 
-### Deployment
+```js
+import './carouselStyle.css';
+import Carousel from '@somedaycode/react-carousel';
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+const App = () => {
+  const options = {
+    // options
+  };
 
-### `yarn build` fails to minify
+  const items = [1, 2, 3, 4].map((card) => <div>{card}</div>);
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  return (
+    <main>
+      <Carousel {...options}>{items}</Carousel>
+    </main>
+  );
+};
+```
+
+Please let me know if you get any issues while using `@somedaycode/react-carousel`.
+
+email: somedaycode@gmail.com
+
+github:
