@@ -32,9 +32,10 @@ const Item = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
-  border-radius: 6px;
-  width: 188px; // 200px - border(1px + 1px) - margin(5px + 5px)
+  font-size: 40px;
+  background: linear-gradient(to right, #ffafbd, #ffc3a0);
+  border-radius: 10px;
+  width: 190px; // 200px - margin(5px + 5px)
   height: 200px;
 `;
 
