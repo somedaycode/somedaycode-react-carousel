@@ -1,22 +1,45 @@
 {
-  "name": "somedaycode-react-carousel",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@somedaycode/react-carousel",
+  "version": "0.1.4",
+  "private": false,
+  "module": "dist/Carousel.js",
+  "main": "dist/Carousel.js",
+  "keywords": [
+    "react",
+    "carousel",
+    "slider"
+  ],
+  "homepage": "https://github.com/somedaycode/somedaycode-react-carousel",
+  "bugs": {
+    "url": "https://github.com/somedaycode/somedaycode-react-carousel",
+    "email": "somedaycode@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/somedaycode/somedaycode-react-carousel"
+  },
   "dependencies": {
-    "@somedaycode/react-carousel": "^0.1.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-icons": "^4.2.0",
     "react-scripts": "4.0.3",
+    "styled-components": "^5.2.3",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "publish:npm": "rm -rf dist && mkdir dist && babel src/lib -d dist --copy-files"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ]
   },
   "eslintConfig": {
     "extends": [
@@ -35,5 +58,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.16",
+    "@babel/preset-react": "^7.13.13"
   }
 }
